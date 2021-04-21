@@ -1,0 +1,29 @@
+
+#GATEWAY'S CONFIG
+server:
+  port: 0
+
+spring:
+  application:
+    name: notifications
+  datasource:
+    url:
+    username:
+    password:
+
+dbc:
+  driverClassName: com.postgresql.Driver
+
+hibernate:
+  dialect: org.hibernate.dialect.PostgresSQL82Dialect
+  hbm2ddl:
+    auto: create-drop
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9999/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id:  ${spring.application.name}:${random.value}
