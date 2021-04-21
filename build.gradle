@@ -23,6 +23,9 @@ ext {
 }
 
 dependencies {
+	implementation 'junit:junit:4.12'
+	implementation 'junit:junit:4.12'
+
 
 	//Testing
 	runtimeOnly 'com.h2database:h2'
@@ -31,6 +34,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	//Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'

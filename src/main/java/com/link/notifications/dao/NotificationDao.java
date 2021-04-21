@@ -31,6 +31,14 @@ public interface NotificationDao extends JpaRepository<Notification, Integer> {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * <p>Returns a list of all unread notifications for a specific user</p>
+     * @param userId - The user id of the user to get notifications for
+     * @return A list of unread notifications
+     */
+    List<Notification> findAllUnread(int userId);
+
+    //----------------------------------------------------------------------------------------------//
 
 
 }

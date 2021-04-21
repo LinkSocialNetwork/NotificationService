@@ -65,7 +65,25 @@ public class NotificationService {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * <p>Calls dao to get a list of all unread notifications for a user</p>
+     * @param userId - The id of the user to get notifications for
+     * @return A list of unread notifications for the specified user
+     */
+    List<Notification> getUnread(int userId){
+        return null;
+    }
 
+    //----------------------------------------------------------------------------------------------//
 
+    /**
+     * <p>Saves a notification to the database</p>
+     * @param notification - The notification to add to the database
+     * @return True for testing purposes
+     */
+    public boolean addOne(Notification notification){
+        dao.save(notification);
+        return true;
+    }
 
 }

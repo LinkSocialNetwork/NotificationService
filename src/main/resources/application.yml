@@ -11,7 +11,7 @@ spring:
     username:
     password:
 
-dbc:
+jdbc:
   driverClassName: com.postgresql.Driver
 
 hibernate:
