@@ -28,10 +28,14 @@ dependencies {
 
 
 	//Testing
-	runtimeOnly 'com.h2database:h2'
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	testImplementation group: 'com.h2database', name: 'h2', version: '1.4.197'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	//Hibernate
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.19'
 
 	//Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
@@ -41,7 +45,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 dependencyManagement {

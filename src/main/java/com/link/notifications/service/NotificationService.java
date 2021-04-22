@@ -25,7 +25,7 @@ public class NotificationService {
      *  <p>Calls dao to get a list of all notifications</p>
      * @return A list of all notifications
      */
-    List<Notification> getAll(){
+    public List<Notification> getAll(){
         return dao.findAll();
     }
 
@@ -36,7 +36,7 @@ public class NotificationService {
      * @param userId - The user id of the user to get notifications for
      * @return A list of notifications for a specific user
      */
-    List<Notification> getAllByUser(int userId){
+    public List<Notification> getAllByUser(int userId){
         return dao.findByTargetId(userId);
     }
 
@@ -47,7 +47,7 @@ public class NotificationService {
      * @param id - The id of the notification to return
      * @return A notification that matches the provided id
      */
-    Notification getOne(int id){
+    public Notification getOne(int id){
         return dao.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
@@ -59,8 +59,8 @@ public class NotificationService {
      * @param id - The user to get notifications for
      * @return A list of notifications of a specific type for a specified user
      */
-    List<Notification> getByType(String type, int id){
-        return dao.finAllByType(type, id);
+    public List<Notification> getByType(String type, int id){
+        return dao.findAllByTypeAndTriggeredId(type, id);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -70,7 +70,7 @@ public class NotificationService {
      * @param userId - The id of the user to get notifications for
      * @return A list of unread notifications for the specified user
      */
-    List<Notification> getUnread(int userId){
+    public List<Notification> getUnread(int userId){
         return null;
     }
 
@@ -85,5 +85,32 @@ public class NotificationService {
         dao.save(notification);
         return true;
     }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * <p>Calls dao to delete a notification from the database</p>
+     * @param notification - The notification to delete
+     * @return A true value for testing
+     */
+    public boolean deleteOne(Notification notification){
+        dao.delete(notification);
+        return true;
+    }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * <p>Updates a notifications details in the database</p>
+     * @param notification - The notification to update
+     * @return A true value for testing
+     */
+    public boolean updateOne(Notification notification){
+        dao.save(notification);
+        return true;
+    }
+
+    //----------------------------------------------------------------------------------------------//
+
 
 }

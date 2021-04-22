@@ -1,6 +1,8 @@
 package com.link.notifications.controller;
 
 import com.link.notifications.model.Notification;
+import com.link.notifications.service.NotificationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -8,6 +10,13 @@ import java.util.List;
 
 @RestController
 public class NotificationController {
+
+    private NotificationService notificationServ;
+
+    @Autowired
+    public NotificationController(NotificationService notificationServ) {
+        this.notificationServ = notificationServ;
+    }
 
     //----------------------------------------------------------------------------------------------//
 
@@ -18,7 +27,7 @@ public class NotificationController {
      */
     @GetMapping("/notifications/user/{id}")
     public List<Notification> getAll(@PathVariable int id){
-        return null;
+        return notificationServ.getAllByUser(id);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -30,7 +39,7 @@ public class NotificationController {
      */
     @GetMapping("/notifications/{id}")
     public Notification getOne(@PathVariable int id){
-        return null;
+        return notificationServ.getOne(id);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -43,7 +52,7 @@ public class NotificationController {
      */
     @GetMapping("/notifications/user/{id}/type/{type}")
     public List<Notification> getByType(@PathVariable String type, @PathVariable int id){
-        return null;
+        return notificationServ.getByType(type, id);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -53,14 +62,29 @@ public class NotificationController {
      * @param id - The user id of the user to get the notifications for
      * @return A list of unread notifications
      */
-    @GetMapping("/notifications/user/{id}")
+    @GetMapping("/notifications/user/{id}/unread")
     public List<Notification> getUnread(@PathVariable int id){
-        return null;
+        return notificationServ.getUnread(id);
     }
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * <p>deletes a notification by its id</p>
+     * @param id - The id of the notification to delete
+     * @return True for testing
+     */
+    @DeleteMapping("/notifications/{id}")
+    public boolean deleteOne(@PathVariable int id){
+        Notification n = notificationServ.getOne(id);
+        notificationServ.deleteOne(n);
+        return true;
+    }
 
+    //----------------------------------------------------------------------------------------------//
 
-
+    @PostMapping("/notifications")
+    public boolean addOne(Notification n){
+        return true;
+    }
 }
