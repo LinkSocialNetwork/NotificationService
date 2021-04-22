@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/notifications")
 public class NotificationController {
 
     private NotificationService notificationServ;
@@ -25,7 +26,7 @@ public class NotificationController {
      * @param id - The user id of the user to get notifications for
      * @return A list of all notifications for the user
      */
-    @GetMapping("/notifications/user/{id}")
+    @GetMapping("/user/{id}")
     public List<Notification> getAll(@PathVariable int id){
         return notificationServ.getAllByUser(id);
     }
@@ -37,7 +38,7 @@ public class NotificationController {
      * @param id - The id of the notification to get
      * @return A notification that matches the id param
      */
-    @GetMapping("/notifications/{id}")
+    @GetMapping("/{id}")
     public Notification getOne(@PathVariable int id){
         return notificationServ.getOne(id);
     }
@@ -62,7 +63,7 @@ public class NotificationController {
      * @param id - The user id of the user to get the notifications for
      * @return A list of unread notifications
      */
-    @GetMapping("/notifications/user/{id}/unread")
+    @GetMapping("/user/{id}/unread")
     public List<Notification> getUnread(@PathVariable int id){
         return notificationServ.getUnread(id);
     }
@@ -74,7 +75,7 @@ public class NotificationController {
      * @param id - The id of the notification to delete
      * @return True for testing
      */
-    @DeleteMapping("/notifications/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteOne(@PathVariable int id){
         Notification n = notificationServ.getOne(id);
         notificationServ.deleteOne(n);
@@ -83,7 +84,12 @@ public class NotificationController {
 
     //----------------------------------------------------------------------------------------------//
 
-    @PostMapping("/notifications")
+    /**
+     * <p></p>
+     * @param n
+     * @return
+     */
+    @PostMapping("/")
     public boolean addOne(Notification n){
         return true;
     }
