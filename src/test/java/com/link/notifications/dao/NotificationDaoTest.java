@@ -12,8 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@ContextConfiguration(classes= NotificationsApplication.class)
+//@RunWith(SpringRunner.class)
+//@ContextConfiguration(classes= NotificationsApplication.class)
 @DataJpaTest
 class NotificationDaoTest {
 
