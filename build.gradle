@@ -30,9 +30,8 @@ dependencies {
 	//Testing
 	testImplementation group: 'com.h2database', name: 'h2', version: '1.4.197'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.8.0'
 
-	//Hibernate
+	//SQL
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.19'
 

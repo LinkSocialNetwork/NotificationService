@@ -1,19 +1,14 @@
 package com.link.notifications.dao;
 
-import com.link.notifications.NotificationsApplication;
 import com.link.notifications.model.Notification;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-//@RunWith(SpringRunner.class)
-//@ContextConfiguration(classes= NotificationsApplication.class)
+import static org.junit.Assert.*;
+
 @DataJpaTest
 class NotificationDaoTest {
 
@@ -24,16 +19,9 @@ class NotificationDaoTest {
 
     @Test
     void findByTargetId() {
-        Notification n = new Notification();
-            n.setTriggeredId(1);
-            n.setTargetId(2);
-            n.setRead(false);
-            n.setType("like");
+        List<Notification> dbNote = dao.findByTargetId(1);
+        System.out.println(dbNote);
 
-        dao.save(n);
-        List<Notification> dbNote = dao.findByTargetId(2);
-
-        Assert.assertNotNull(dbNote);
     }
 
     //----------------------------------------------------------------------------------------------//
