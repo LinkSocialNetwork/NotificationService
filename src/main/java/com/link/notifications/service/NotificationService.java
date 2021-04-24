@@ -60,7 +60,7 @@ public class NotificationService {
      * @return A list of notifications of a specific type for a specified user
      */
     public List<Notification> getByType(String type, int id){
-        return dao.findAllByTypeAndTriggeredId(type, id);
+        return dao.findAllByTypeAndTargetId(type, id);
     }
 
     //----------------------------------------------------------------------------------------------//

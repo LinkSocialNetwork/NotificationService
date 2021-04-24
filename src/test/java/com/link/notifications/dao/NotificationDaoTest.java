@@ -27,9 +27,17 @@ class NotificationDaoTest {
     //----------------------------------------------------------------------------------------------//
 
     @Test
-    void finAllByType() {
+    void findAllByTypeAndTargetId() {
+        List<Notification> dbNote = dao.findAllByTypeAndTargetId("like", 1);
+        System.out.println(dbNote);
     }
 
     //----------------------------------------------------------------------------------------------//
+
+    @Test
+    void findAllByTriggeredIdAndReadFalse(){
+        List<Notification> dbNote = dao.findAllByTriggeredIdAndReadFalse(1);
+        System.out.println(dbNote);
+    }
 
 }

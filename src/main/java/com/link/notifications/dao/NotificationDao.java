@@ -27,7 +27,7 @@ public interface NotificationDao extends JpaRepository<Notification, Integer> {
      * @param id - The user id to get notifications for
      * @return A list of notifications of a specific type for a specific user
      */
-    List<Notification> findAllByTypeAndTriggeredId(String type, int id);
+    List<Notification> findAllByTypeAndTargetId(String type, int id);
 
     //----------------------------------------------------------------------------------------------//
 
