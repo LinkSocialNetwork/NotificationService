@@ -57,7 +57,7 @@ spring:
           starttls:
             enable: true
   datasource:
-    url: jdbc:h2:file:./NotificationService/myh2database/myh2file
+    url: jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1
     password: sa
     username: mypass
     driverClassName: org.h2.Driver
