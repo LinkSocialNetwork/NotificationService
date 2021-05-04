@@ -1,8 +1,6 @@
 package com.link.notifications.controller;
 
-import com.link.notifications.model.Like;
 import com.link.notifications.model.Notification;
-import com.link.notifications.model.Post;
 import com.link.notifications.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -88,18 +86,11 @@ public class NotificationController {
 
     /**
      * <p></p>
-     * @param id
-     * @param like
+     * @param n
      * @return
      */
-    @PostMapping("/post/{id}/like")
-    public boolean addOne(@PathVariable int id, @RequestBody Like like){
-        Notification n = new Notification();
-        Post post = like.getPost();
-        n.setTriggeredId(like.getUserId());
-        n.setTargetId(post.getUser().getUserID());
-        n.setType("like");
-        n.setPostId(id);
+    @PostMapping("")
+    public boolean addOne(@RequestBody Notification n){
         return notificationServ.addOne(n);
     }
 }
