@@ -71,7 +71,7 @@ public class NotificationService {
      * @return A list of unread notifications for the specified user
      */
     public List<Notification> getUnread(int userId){
-        return null;
+        return dao.findAllByTriggeredIdAndReadFalse(userId);
     }
 
     //----------------------------------------------------------------------------------------------//
