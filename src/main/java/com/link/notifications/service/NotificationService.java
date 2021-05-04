@@ -48,7 +48,7 @@ public class NotificationService {
      * @return A notification that matches the provided id
      */
     public Notification getOne(int id){
-        return dao.findById(id).orElseThrow(EntityNotFoundException::new);
+        return dao.findById(id);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -108,6 +108,35 @@ public class NotificationService {
     public boolean updateOne(Notification notification){
         dao.save(notification);
         return true;
+    }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * Marks all notifications as read for user
+     * @param userId - Id of the user to mark notifications as read
+     * @return True or false
+     */
+    public boolean markAllRead(int userId) {
+        List<Notification> list = dao.findAllByTriggeredIdAndReadFalse(userId);
+        for( Notification n : list){
+            n.setRead(true);
+            dao.save(n);
+        }
+        return true;
+    }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * Marks one notification as read
+     * @param notificationId - The id of the notification
+     * @return true if save works
+     */
+    public boolean markOneAsRead(int notificationId) {
+        Notification n = dao.findById(notificationId);
+        n.setRead(true);
+        return dao.save(n) != null;
     }
 
     //----------------------------------------------------------------------------------------------//

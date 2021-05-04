@@ -40,5 +40,8 @@ public interface NotificationDao extends JpaRepository<Notification, Integer> {
 
     //----------------------------------------------------------------------------------------------//
 
+    Notification findById(int notificationId);
+
+
 
 }
