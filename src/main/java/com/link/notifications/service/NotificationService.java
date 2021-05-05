@@ -71,7 +71,7 @@ public class NotificationService {
      * @return A list of unread notifications for the specified user
      */
     public List<Notification> getUnread(int userId){
-        return dao.findAllByTriggeredIdAndReadFalse(userId);
+        return dao.findAllByTargetIdAndReadFalse(userId);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -118,7 +118,7 @@ public class NotificationService {
      * @return True or false
      */
     public boolean markAllRead(int userId) {
-        List<Notification> list = dao.findAllByTriggeredIdAndReadFalse(userId);
+        List<Notification> list = dao.findAllByTargetIdAndReadFalse(userId);
         for( Notification n : list){
             n.setRead(true);
             dao.save(n);
