@@ -23,13 +23,26 @@ ext {
 }
 
 dependencies {
+	implementation 'junit:junit:4.12'
+	implementation 'junit:junit:4.12'
+
+
+	//Testing
+	implementation group: 'com.h2database', name: 'h2', version: '1.4.197'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//SQL
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.19'
+
+	//Spring Boot
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 dependencyManagement {
