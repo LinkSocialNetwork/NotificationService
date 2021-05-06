@@ -85,12 +85,37 @@ public class NotificationController {
     //----------------------------------------------------------------------------------------------//
 
     /**
-     * <p></p>
-     * @param n
+     * <p>Creates a notification</p>
+     * @param n - The notification to add
      * @return
      */
     @PostMapping("")
     public boolean addOne(@RequestBody Notification n){
         return notificationServ.addOne(n);
     }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * <p>Marks all unread notifications as read for user</p>
+     * @param userId - The user to mark all notifications read for
+     * @return boolean
+     */
+    @PutMapping("/user/{id}/clearAll")
+    public boolean clearAllUnread(@PathVariable("id") int userId){
+        return notificationServ.markAllRead(userId);
+    }
+
+    //----------------------------------------------------------------------------------------------//
+
+    /**
+     * <p>Marks one notification as read</p>
+     * @param notificationId -The id of the notification to mark as read
+     * @return boolean
+     */
+    @PutMapping("/notification/{id}")
+    public boolean markAsRead(@PathVariable("id") int notificationId){
+        return notificationServ.markOneAsRead(notificationId);
+    }
+
 }
