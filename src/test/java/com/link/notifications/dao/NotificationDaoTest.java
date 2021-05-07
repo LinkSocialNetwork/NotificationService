@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -22,10 +23,11 @@ class NotificationDaoTest {
 
     @Test
     void findByTargetId() {
+
         List<Notification> expected = new ArrayList<>();
         Notification n1 = new Notification();
         n1.setId(3);
-        n1.setDate(new Timestamp(0));
+        n1.setDate(null);
         n1.setPostId(4);
         n1.setRead(false);
         n1.setTargetId(3);
@@ -42,7 +44,7 @@ class NotificationDaoTest {
         List<Notification> expected = new ArrayList<>();
         Notification n1 = new Notification();
         n1.setId(2);
-        n1.setDate(new Timestamp(0));
+        n1.setDate(null);
         n1.setPostId(2);
         n1.setRead(false);
         n1.setTargetId(2);
@@ -61,7 +63,7 @@ class NotificationDaoTest {
 
         Notification n1 = new Notification();
         n1.setId(1);
-        n1.setDate(new Timestamp(0));
+        n1.setDate(null);
         n1.setPostId(1);
         n1.setRead(false);
         n1.setTargetId(1);
@@ -77,7 +79,7 @@ class NotificationDaoTest {
     void findById(){
         Notification expected = new Notification();
         expected.setId(1);
-        expected.setDate(new Timestamp(0));
+        expected.setDate(null);
         expected.setPostId(1);
         expected.setRead(false);
         expected.setTargetId(1);

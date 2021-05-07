@@ -37,6 +37,7 @@ class NotificationServiceTest {
 
     @Test
     void getAll() {
+
         Notification not1 = new Notification();
         Notification not2 = new Notification();
 
