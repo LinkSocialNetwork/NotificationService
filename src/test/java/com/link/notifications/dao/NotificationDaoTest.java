@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,17 +22,35 @@ class NotificationDaoTest {
 
     @Test
     void findByTargetId() {
-        List<Notification> dbNote = dao.findByTargetId(1);
-        System.out.println(dbNote);
+        List<Notification> expected = new ArrayList<>();
+        Notification n1 = new Notification();
+        n1.setId(3);
+        n1.setDate(new Timestamp(0));
+        n1.setPostId(4);
+        n1.setRead(false);
+        n1.setTargetId(3);
+        n1.setTriggeredId(6);
+        n1.setType("liked");
+        expected.add(n1);
+        List<Notification> actual = dao.findByTargetId(3);
+        assertEquals(expected,actual);
 
     }
-
     //----------------------------------------------------------------------------------------------//
-
     @Test
     void findAllByTypeAndTargetId() {
-        List<Notification> dbNote = dao.findAllByTypeAndTargetId("like", 1);
-        System.out.println(dbNote);
+        List<Notification> expected = new ArrayList<>();
+        Notification n1 = new Notification();
+        n1.setId(2);
+        n1.setDate(new Timestamp(0));
+        n1.setPostId(2);
+        n1.setRead(false);
+        n1.setTargetId(2);
+        n1.setTriggeredId(3);
+        n1.setType("commented");
+        expected.add(n1);
+        List<Notification> actual = dao.findAllByTypeAndTargetId("commented", 2);
+        assertEquals(expected,actual);
     }
 
     //----------------------------------------------------------------------------------------------//
@@ -42,7 +61,7 @@ class NotificationDaoTest {
 
         Notification n1 = new Notification();
         n1.setId(1);
-        n1.setDate(new Date(0000 ,00,00,00,00,00));
+        n1.setDate(new Timestamp(0));
         n1.setPostId(1);
         n1.setRead(false);
         n1.setTargetId(1);
@@ -51,6 +70,20 @@ class NotificationDaoTest {
 
         expected.add(n1);
         List<Notification> actual = dao.findAllByTargetIdAndReadFalse(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void findById(){
+        Notification expected = new Notification();
+        expected.setId(1);
+        expected.setDate(new Timestamp(0));
+        expected.setPostId(1);
+        expected.setRead(false);
+        expected.setTargetId(1);
+        expected.setTriggeredId(2);
+        expected.setType("liked");
+        Notification actual = dao.findById(1);
         assertEquals(expected, actual);
     }
 
