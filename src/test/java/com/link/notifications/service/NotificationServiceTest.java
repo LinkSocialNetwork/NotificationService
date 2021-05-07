@@ -11,12 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-<<<<<<< HEAD
-import javax.validation.constraints.AssertTrue;
-=======
->>>>>>> b0c5b59ff9e446cc06f12d3661fa6c9285ac02b6
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
