@@ -61,7 +61,6 @@ spring:
     password: sa
     username: mypass
     driverClassName: org.h2.Driver
-    data: classpath:./testdata.sql
     initialize: true
     initialization-mode: always
   jpa:
