@@ -35,8 +35,11 @@ class NotificationServiceTest {
     void tearDown() {
     }
 
+    /**
+     * tests to see if getAll() returns the full list of notifications it is passed
+     */
     @Test
-    void getAll() {
+    void getAll_ReturnsExpectedValues_WhenCalled() {
 
         Notification not1 = new Notification();
         Notification not2 = new Notification();
@@ -50,8 +53,11 @@ class NotificationServiceTest {
 
     }
 
+    /**
+     * tests to see if getAllByUser returns all notifications sent back by the DB
+     */
     @Test
-    void getAllByUser() {
+    void getAllByUser_ReturnsAllNotificationsAssociatedWithUser() {
         Notification not1 = new Notification();
         not1.setTargetId(1);
         Notification not2 = new Notification();
@@ -69,8 +75,11 @@ class NotificationServiceTest {
 
     }
 
+    /**
+     * tests if getOne() returns the specified value given to it by the DAO.
+     */
     @Test
-    void getOne() {
+    void getOne_ReturnsNotificationFromDAO_WhenSuccessful() {
         Notification not1 = new Notification();
         not1.setId(1);
 
@@ -82,8 +91,11 @@ class NotificationServiceTest {
 
     }
 
+    /**
+     * tests if getByType() returns the values returned by dao.findAllByTypeAndTargetId()
+     */
     @Test
-    void getByType() {
+    void getByType_ReturnsNotificationsReturnedByTheDAO_WhenSuccessful() {
         Notification not1 = new Notification();
         not1.setType("type1");
         not1.setTargetId(1);
@@ -105,8 +117,11 @@ class NotificationServiceTest {
         Mockito.verify(notificationDao).findAllByTypeAndTargetId("type1", 1);
     }
 
+    /**
+     * tests to see if getUnread() returns the values returned by dao.findAllByTargetIdAndReadFalse()
+     */
     @Test
-    void getUnread() {
+    void getUnread_ReturnsNotificationsReturnedByTheDAO_WhenSuccessful() {
         Notification not1 = new Notification();
         not1.setRead(false);
         not1.setTargetId(1);
@@ -126,8 +141,12 @@ class NotificationServiceTest {
         Mockito.verify(notificationDao).findAllByTargetIdAndReadFalse(1);
     }
 //
+
+    /**
+     * tests to see if addOne() returns true after calling dao.save()
+     */
     @Test
-    void addOne() {
+    void addOne_ReturnsTrueAndCallsDAO_WhenSuccessful() {
         //Arrange
         Notification testNoti = new Notification(1,1,1,1, "like", true, new Date());
 
@@ -136,8 +155,11 @@ class NotificationServiceTest {
         Mockito.verify(notificationDao).save(testNoti);
     }
 
+    /**
+     * tests to see if deleteOne() returns true after calling dao.delete()
+     */
     @Test
-    void deleteOne() {
+    void deleteOne_ReturnsTrueAndCallsDAO_WhenSuccessful() {
         Notification testNoti = new Notification(1,1,1,1, "like", true, new Date());
 
         assertTrue(notificationService.deleteOne(testNoti));
@@ -145,8 +167,11 @@ class NotificationServiceTest {
         Mockito.verify(notificationDao).delete(testNoti);
     }
 
+    /**
+     * tests to see if updateOne() returns true after calling dao.save()
+     */
     @Test
-    void updateOne() {
+    void updateOne_ReturnsTrueAndCallsDAO_WhenSuccessful() {
         Notification testNoti = new Notification(1,1,1,1, "like", true, new Date());
 
         assertTrue(notificationService.updateOne(testNoti));
@@ -154,8 +179,12 @@ class NotificationServiceTest {
         Mockito.verify(notificationDao).save(testNoti);
     }
 
+    /**
+     * tests if markAllRead() returns true and calls the dao X times, where X is the amount of notifications
+     * to change.
+     */
     @Test
-    void markAllRead() {
+    void markAllRead_ReturnsTrueandCallsDAOXTimes_WhenSuccessful() {
         //Arrange
         Notification noti1 = new Notification(1,1,1,1, "like", false, new Date());
         Notification noti2 = new Notification(1,1,1,1, "like", false, new Date());
@@ -176,8 +205,11 @@ class NotificationServiceTest {
 
     }
 
+    /**
+     * tests if markOneAsRead returns true and calls dao.save() when successful
+     */
     @Test
-    void markOneAsRead() {
+    void markOneAsRead_ReturnsTrueAndCallsDAO_WhenSuccessful() {
         Notification noti1 = new Notification(1,1,1,1, "like", false, new Date());
         Mockito.when(notificationDao.findById(1)).thenReturn(noti1);
 

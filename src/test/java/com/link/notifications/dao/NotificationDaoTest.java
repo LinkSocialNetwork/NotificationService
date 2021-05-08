@@ -21,8 +21,11 @@ class NotificationDaoTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests if findByTargetId returns the correct Notifications based on a given targetId
+     */
     @Test
-    void findByTargetId() {
+    void findByTargetId_ReturnsNotificationWithSpecifiedId_WhenSuccessful() {
 
         List<Notification> expected = new ArrayList<>();
         Notification n1 = new Notification();
@@ -39,8 +42,12 @@ class NotificationDaoTest {
 
     }
     //----------------------------------------------------------------------------------------------//
+
+    /**
+     * tests to see if findAllByTypeAndTargetId returns notifications with specfied TargetId and type
+     */
     @Test
-    void findAllByTypeAndTargetId() {
+    void findAllByTypeAndTargetId_ReturnsNotificationsWithSpecifiedTypeAndId_WhenSuccessful() {
         List<Notification> expected = new ArrayList<>();
         Notification n1 = new Notification();
         n1.setId(2);
@@ -57,8 +64,11 @@ class NotificationDaoTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests that findAllByTargetIdAndReadFalse() returns the unread messages of a particular user
+     */
     @Test
-    void findAllByTargetIdAndReadFalse(){
+    void findAllByTargetIdAndReadFalse_ReturnsUnreadNotificationsFromSpecificUser_WhenSuccessful(){
         List<Notification> expected = new ArrayList<>();
 
         Notification n1 = new Notification();
@@ -75,8 +85,11 @@ class NotificationDaoTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * tests that findById returns a Notification with a specified Id.
+     */
     @Test
-    void findById(){
+    void findById_ReturnsNotificationWithSpecifiedId_WhenSuccessful(){
         Notification expected = new Notification();
         expected.setId(1);
         expected.setDate(null);

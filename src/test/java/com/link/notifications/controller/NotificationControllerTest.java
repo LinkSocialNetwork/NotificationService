@@ -32,8 +32,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * Checks to make sure that the getAll() method returns the correct list of Notifications when called.
+     */
     @Test
-    void getAll() {
+    void getAll_ReturnsAllValues_WhenCalled() {
         Notification not1 = new Notification();
         Notification not2 = new Notification();
         Notification not3 = new Notification();
@@ -48,8 +51,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests to see if the correct notification is returned by the getOne() method
+     */
     @Test
-    void getOne() {
+    void getOne_ReturnsSpecifiedNotification_WhenCalled() {
         Notification not1 = new Notification();
 
         Mockito.when(notificationService.getOne(1)).thenReturn(not1);
@@ -61,8 +67,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests if the getByType() method returns all notifications with the specified type
+     */
     @Test
-    void getByType() {
+    void getByType_ReturnsAllOfSpecifiedType_WhenCalled() {
         Notification notification1 = new Notification();
         notification1.setType("type1");
         Notification notification2 = new Notification();
@@ -84,8 +93,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests to see if all unread messages are returned by getUnread() method
+     */
     @Test
-    void getUnread() {
+    void getUnread_ReturnsUnreadMessages() {
         Notification read = new Notification();
         read.setRead(true);
         read.setTargetId(1);
@@ -113,8 +125,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests to see if the method returns true when called if the specified notification is deleted
+     */
     @Test
-    void deleteOne() {
+    void deleteOne_ReturnsTrue_WhenCalledOnASpecifiedNotification() {
         Notification toBeDeleted = new Notification();
         toBeDeleted.setId(1);
 
@@ -129,8 +144,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests to see if addOne() returns true when the resource is successfully created
+     */
     @Test
-    void addOne() {
+    void addOne_ReturnsTrue_WhenSuccessful() {
         Notification toBeAdded = new Notification();
 
         Mockito.when(notificationService.addOne(toBeAdded)).thenReturn(true);
@@ -142,8 +160,11 @@ class NotificationControllerTest {
 
     //----------------------------------------------------------------------------------------------//
 
+    /**
+     * tests to see if clearAllUnread() returns true when successful
+     */
     @Test
-    void clearAllUnread(){
+    void clearAllUnread_ReturnsTrueWhenSuccessful(){
 
         Mockito.when(notificationService.markAllRead(1)).thenReturn(true);
 
@@ -152,8 +173,11 @@ class NotificationControllerTest {
         Mockito.verify(notificationService).markAllRead(1);
     }
 
+    /**
+     * tests to see if markAsRead() returns true if successful
+     */
     @Test
-    void markAsRead(){
+    void markAsRead_ReturnsTrue_WhenSuccessful(){
         Mockito.when(notificationService.markOneAsRead(1)).thenReturn(true);
 
         assertTrue(notificationController.markAsRead(1));
