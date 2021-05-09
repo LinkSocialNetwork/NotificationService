@@ -1,9 +1,0 @@
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 1, default, 1, 2, 'liked');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 2, default, 1, 3, 'commented');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 4, default, 1, 6, 'liked');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 1, default, 2, 6, 'liked');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 3, default, 2, 5, 'commented');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 8, default, 4, 3, 'liked');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 9, default, 6, 3, 'commented');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 7, default, 5, 1, 'liked');
-insert into notifications (id, date, post_id, read, target_id, triggered_id, type) values (default, current_timestamp, 2, default, 7, 1, 'liked');

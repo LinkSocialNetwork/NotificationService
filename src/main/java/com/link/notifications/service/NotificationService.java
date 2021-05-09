@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service("notificationService")
 public class NotificationService {
@@ -136,7 +135,8 @@ public class NotificationService {
     public boolean markOneAsRead(int notificationId) {
         Notification n = dao.findById(notificationId);
         n.setRead(true);
-        return dao.save(n) != null;
+        dao.save(n);
+        return true;
     }
 
     //----------------------------------------------------------------------------------------------//

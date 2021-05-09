@@ -14,6 +14,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "notifications")
@@ -42,7 +43,6 @@ public class Notification {
     @Column(name="date")
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-DD-YYYY HH:MM:SS")
     private Date date;
 
 }
